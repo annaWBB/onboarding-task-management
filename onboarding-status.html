@@ -4,6 +4,53 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Onboarding Status — Anna's Daily View</title>
+<script>
+  (function() {
+    const KEY = 'ob-auth';
+    const HASH = '7e4f3a1b9c2d6e8f0a5b7c9d1e3f5a7b9c2d4e6f8a0b2c4d6e8f0a1b3c5d7e9';
+    function hashStr(s) {
+      let h = 0;
+      for (let i = 0; i < s.length; i++) h = (Math.imul(31, h) + s.charCodeAt(i)) | 0;
+      return Math.abs(h).toString(16).padStart(8,'0');
+    }
+    const stored = sessionStorage.getItem(KEY);
+    if (stored === hashStr('taskboarding')) return;
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.style.display = 'none';
+      const overlay = document.createElement('div');
+      overlay.style.cssText = 'position:fixed;inset:0;background:#f5f4f1;display:flex;align-items:center;justify-content:center;z-index:9999';
+      overlay.innerHTML = `
+        <div style="background:#fff;border:1.5px solid #e8e8e4;border-radius:12px;padding:32px 28px;width:320px;text-align:center">
+          <div style="font-size:18px;font-weight:700;color:#111;margin-bottom:6px">Onboarding Status</div>
+          <div style="font-size:13px;color:#888;margin-bottom:20px">Enter password to continue</div>
+          <input id="pw-input" type="password" placeholder="Password"
+            style="width:100%;padding:9px 12px;border:1.5px solid #e8e8e4;border-radius:7px;font-size:14px;outline:none;margin-bottom:10px">
+          <div id="pw-error" style="font-size:12px;color:#dc2626;min-height:16px;margin-bottom:8px"></div>
+          <button id="pw-btn"
+            style="width:100%;padding:9px;background:#111;color:#fff;border:none;border-radius:7px;font-size:14px;font-weight:600;cursor:pointer">
+            Enter
+          </button>
+        </div>`;
+      document.body.parentNode.insertBefore(overlay, document.body);
+      function attempt() {
+        const val = document.getElementById('pw-input').value;
+        if (hashStr(val) === hashStr('taskboarding')) {
+          sessionStorage.setItem(KEY, hashStr('taskboarding'));
+          overlay.remove();
+          document.body.style.display = '';
+        } else {
+          document.getElementById('pw-error').textContent = 'Incorrect password';
+          document.getElementById('pw-input').value = '';
+          document.getElementById('pw-input').focus();
+        }
+      }
+      document.getElementById('pw-btn').addEventListener('click', attempt);
+      document.getElementById('pw-input').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') attempt();
+      });
+    });
+  })();
+</script>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 

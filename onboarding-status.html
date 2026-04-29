@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onboarding Status — Anna's Daily View</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f5f4f1;
+    color: #1a1a1a;
+    padding: 32px 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  header {
+    margin-bottom: 28px;
+  }
+
+  header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+  }
+
+  header .meta {
+    font-size: 13px;
+    color: #888;
+    margin-top: 4px;
+  }
+
+  .alert-banner {
+    background: #fff3cd;
+    border: 1.5px solid #f0c040;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: #7a5c00;
+  }
+
+  .alert-banner strong { color: #5a3f00; }
+
+  .gap-banner {
+    background: #f0f0f0;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 16px;
+    margin-bottom: 28px;
+    font-size: 13px;
+    color: #555;
+  }
+
+  .gap-banner strong { color: #333; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #999;
+    margin-bottom: 10px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    border: 1.5px solid #e8e8e4;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+  }
+
+  .card.urgent {
+    border-color: #f0a000;
+    background: #fffdf2;
+  }
+
+  .card.alert {
+    border-color: #e57373;
+    background: #fff8f8;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .person-info {
+    flex: 1;
+  }
+
+  .person-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+  }
+
+  .person-meta {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px;
+  }
+
+  .start-badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .start-badge.imminent { background: #fef3c7; color: #92400e; }
+  .start-badge.soon     { background: #e0f2fe; color: #0369a1; }
+  .start-badge.later    { background: #f3f4f6; color: #555; }
+  .start-badge.convert  { background: #ede9fe; color: #5b21b6; }
+
+  .tasks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .task {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    padding: 8px 12px;
+    border-radius: 7px;
+    background: #f7f7f5;
+  }
+
+  .task .icon { font-size: 15px; flex-shrink: 0; }
+
+  .task.done   { background: #f0fdf4; color: #166534; }
+  .task.todo   { background: #f7f7f5; color: #555; }
+  .task.warn   { background: #fff7ed; color: #9a3412; }
+  .task.danger { background: #fef2f2; color: #991b1b; }
+
+  .task .label { font-weight: 600; }
+  .task .detail { font-size: 11.5px; opacity: 0.85; margin-top: 1px; }
+
+  .task-content { flex: 1; }
+
+  .notes {
+    margin-top: 10px;
+    font-size: 12.5px;
+    color: #666;
+    background: #f9f9f7;
+    border-radius: 6px;
+    padding: 8px 12px;
+    line-height: 1.5;
+  }
+
+  .notes strong { color: #333; }
+
+  .divider {
+    height: 1px;
+    background: #e8e8e4;
+    margin: 28px 0;
+  }
+
+  .completed-section .card {
+    opacity: 0.65;
+  }
+
+  @media (max-width: 600px) {
+    .tasks { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Onboarding Status</h1>
+  <div class="meta">Last updated: Wednesday, April 29, 2026 · Source: #onboarding-tasks · Anna's tasks: laptop ordered + Thursday email</div>
+</header>
+
+<div class="alert-banner">
+  <strong>⚠️ Action needed today:</strong> Rowan Wing, Rosaria Mannino, and Andy Richards start Mon–Tue (5/4–5/5). Their Thursday before-start email is due <strong>tomorrow, April 30</strong>.
+</div>
+
+<div class="gap-banner">
+  <strong>Note on source of truth:</strong> #hires-and-exits is private and not accessible to this workflow. Currently sourcing from #onboarding-tasks. To use #hires-and-exits as the trigger, Craig or Sean will need to grant bot access to that channel.
+</div>
+
+<!-- ───── ACTIVE PIPELINE ───── -->
+<div class="section-label">Active pipeline</div>
+
+<!-- Rowan Wing -->
+<div class="card urgent">
+  <div class="card-header">
+    <div class="person-info">
+      <div class="person-name">Rowan Wing</div>
+      <div class="person-meta">Forward Deployed Architect</div>
+    </div>
+    <span class="start-badge imminent">Starts 5/4</span>
+  </div>
+  <div class="tasks">
+    <div class="task done">
+      <span class="icon">✅</span>
+      <div class="task-content">
+        <div class="label">Laptop ordered</div>
+        <div class="detail">Shipping to Longmont, CO</div>
+      </div>
+    </div>
+    <div class="task danger">
+      <span class="icon">🔴</span>
+      <div class="task-content">
+        <div class="label">Thursday email</div>
+        <div class="detail">Due tomorrow — not sent</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Rosaria Mannino -->
+<div class="card urgent">
+  <div class="card-header">
+    <div class="person-info">
+      <div class="person-name">Rosaria Mannino</div>
+      <div class="person-meta">AI Enablement Lead</div>
+    </div>
+    <span class="start-badge imminent">Starts 5/5</span>
+  </div>
+  <div class="tasks">
+    <div class="task done">
+      <span class="icon">✅</span>
+      <div class="task-content">
+        <div class="label">Laptop ordered</div>
+        <div class="detail">Address confirmed</div>
+      </div>
+    </div>
+    <div class="task danger">
+      <span class="icon">🔴</span>
+      <div class="task-content">
+        <div class="label">Thursday email</div>
+        <div class="detail">Due tomorrow — not sent</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Andy Richards -->
+<div class="card urgent">
+  <div class="card-header">
+    <div class="person-info">
+      <div class="person-name">Andy Richards</div>
+      <div class="person-meta">Recruiter</div>
+    </div>
+    <span class="start-badge imminent">Starts 5/4</span>
+  </div>
+  <div class="tasks">
+    <div class="task done">
+      <span class="icon">✅</span>
+      <div class="task-content">
+        <div class="label">Laptop ordered</div>
+        <div class="detail">Handled by Kelsey</div>
+      </div>
+    </div>
+    <div class="task danger">
+      <span class="icon">🔴</span>
+      <div class="task-content">
+        <div class="label">Thursday email</div>
+        <div class="detail">Due tomorrow — not sent</div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">⚠️ <strong>Open item:</strong> 1Password vault access — Andrew accepted invite but still can't see the tribe-internal-recruiting vault as of this morning. Sean investigating.</div>
+</div>
+
+<!-- Ryan Klapper -->
+<div class="card alert">
+  <div class="card-header">
+    <div class="person-info">
+      <div class="person-name">Ryan Klapper</div>
+      <div class="person-meta">Forward Deployed Engineer</div>
+    </div>
+    <span class="start-badge soon">Starts 5/11</span>
+  </div>
+  <div class="tasks">
+    <div class="task warn">
+      <span class="icon">🟠</span>
+      <div class="task-content">
+        <div class="label">Laptop — not ordered</div>
+        <div class="detail">No address yet; Anna pinging today</div>
+      </div>
+    </div>
+    <div class="task todo">
+      <span class="icon">⬜</span>
+      <div class="task-content">
+        <div class="label">Thursday email</div>
+        <div class="detail">Due 5/7</div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">⚠️ <strong>Shipping constraint:</strong> Ryan is traveling and not home until 5/10. Store pickup is not preferred (won't auto-register to Tribe org). Anna is coordinating directly with him today. Craig flagged in #onboarding-tasks this morning.</div>
+</div>
+
+<!-- David Ezell -->
+<div class="card">
+  <div class="card-header">
+    <div class="person-info">
+      <div class="person-name">David Ezell</div>
+      <div class="person-meta">Forward Deployed Architect</div>
+    </div>
+    <span class="start-badge soon">Starts 5/13</span>
+  </div>
+  <div class="tasks">
+    <div class="task done">
+      <span class="icon">✅</span>
+      <div class="task-content">
+        <div class="label">Laptop ordered</div>
+        <div class="detail">Shipping to Suwanee, GA</div>
+      </div>
+    </div>
+    <div class="task todo">
+      <span class="icon">⬜</span>
+      <div class="task-content">
+        <div class="label">Thursday email</div>
+        <div class="detail">Due 5/7</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Matteo Palvarini -->
+<div class="card">
+  <div class="card-header">
+    <div class="person-info">
+      <div class="person-name">Matteo Palvarini</div>
+      <div class="person-meta">Forward Deployed CTO</div>
+    </div>
+    <span class="start-badge soon">Starts 5/18</span>
+  </div>
+  <div class="tasks">
+    <div class="task warn">
+      <span class="icon">🟠</span>
+      <div class="task-content">
+        <div class="label">Laptop — not ordered</div>
+        <div class="detail">Address received (SF, ship c/o Greenoaks)</div>
+      </div>
+    </div>
+    <div class="task todo">
+      <span class="icon">⬜</span>
+      <div class="task-content">
+        <div class="label">Thursday email</div>
+        <div class="detail">Due 5/14</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Meaghan Casey -->
+<div class="card">
+  <div class="card-header">
+    <div class="person-info">
+      <div class="person-name">Meaghan Casey</div>
+      <div class="person-meta">Partnerships Lead</div>
+    </div>
+    <span class="start-badge later">Starts 5/27</span>
+  </div>
+  <div class="tasks">
+    <div class="task warn">
+      <span class="icon">🟠</span>
+      <div class="task-content">
+        <div class="label">Laptop — not ordered</div>
+        <div class="detail">Address on file (Brooklyn, NY)</div>
+      </div>
+    </div>
+    <div class="task todo">
+      <span class="icon">⬜</span>
+      <div class="task-content">
+        <div class="label">Thursday email</div>
+        <div class="detail">Due 5/21</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sri Velagapudi -->
+<div class="card alert">
+  <div class="card-header">
+    <div class="person-info">
+      <div class="person-name">Sri Velagapudi</div>
+      <div class="person-meta">Member → Core conversion</div>
+    </div>
+    <span class="start-badge convert">Converted 4/26</span>
+  </div>
+  <div class="tasks">
+    <div class="task warn">
+      <span class="icon">🟠</span>
+      <div class="task-content">
+        <div class="label">Laptop — not ordered</div>
+        <div class="detail">No address — no response to email</div>
+      </div>
+    </div>
+    <div class="task done">
+      <span class="icon">✅</span>
+      <div class="task-content">
+        <div class="label">Thursday email</div>
+        <div class="detail">N/A — conversion, already started</div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">⚠️ Sean emailed for shipping address on 4/28 — still no reply. Needs follow-up.</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ───── RECENTLY COMPLETED ───── -->
+<div class="section-label">Recently completed</div>
+<div class="completed-section">
+
+  <div class="card">
+    <div class="card-header">
+      <div class="person-info">
+        <div class="person-name">Carl Mueller</div>
+        <div class="person-meta">FDE — NYC onboarding 4/28</div>
+      </div>
+      <span class="start-badge later">Started ~4/28</span>
+    </div>
+    <div class="tasks">
+      <div class="task done"><span class="icon">✅</span><div class="task-content"><div class="label">Laptop ordered</div><div class="detail">Ordered 4/18, NYC pickup</div></div></div>
+      <div class="task done"><span class="icon">✅</span><div class="task-content"><div class="label">Thursday email</div><div class="detail">Sent</div></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="person-info">
+        <div class="person-name">Harper Foley</div>
+        <div class="person-meta">NYC onboarding 4/28</div>
+      </div>
+      <span class="start-badge later">Started ~4/28</span>
+    </div>
+    <div class="tasks">
+      <div class="task done"><span class="icon">✅</span><div class="task-content"><div class="label">Laptop ordered</div><div class="detail">Confirmed</div></div></div>
+      <div class="task done"><span class="icon">✅</span><div class="task-content"><div class="label">Thursday email</div><div class="detail">Sent</div></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="person-info">
+        <div class="person-name">Bo Tembunkiart</div>
+        <div class="person-meta">FDE</div>
+      </div>
+      <span class="start-badge later">Started ~4/21</span>
+    </div>
+    <div class="tasks">
+      <div class="task done"><span class="icon">✅</span><div class="task-content"><div class="label">Laptop ordered</div><div class="detail">Ordered 4/17</div></div></div>
+      <div class="task done"><span class="icon">✅</span><div class="task-content"><div class="label">Thursday email</div><div class="detail">Sent</div></div></div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

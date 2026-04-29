@@ -1,0 +1,47 @@
+name: Daily Onboarding Status
+
+on:
+  schedule:
+    # 8:00 AM ET (12:00 UTC), weekdays
+    - cron: '0 12 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      send_slack_dm:
+        description: 'Send Slack DM to Anna'
+        required: false
+        default: 'true'
+        type: boolean
+
+jobs:
+  generate-status:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate onboarding status
+        env:
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          SEND_SLACK_DM: ${{ github.event_name == 'schedule' && 'true' || inputs.send_slack_dm }}
+        run: python scripts/generate_status.py
+
+      - name: Commit updated status page
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update onboarding status [${{ env.RUN_DATE }}]'
+          file_pattern: 'output/onboarding-status.html'
+          commit_user_name: 'onboarding-bot'
+          commit_user_email: 'onboarding-bot@tribe.ai'

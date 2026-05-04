@@ -259,15 +259,15 @@
 
 <header>
   <h1>Onboarding Status</h1>
-  <div class="meta">Last updated: Thursday, April 30, 2026 · Source: #onboarding-tasks · <span style="display:inline-flex;align-items:center;gap:4px"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#f59e0b;margin-right:2px"></span> Anna's steps</span></div>
+  <div class="meta">Last updated: Monday, May 4, 2026 · Source: #onboarding-tasks · <span style="display:inline-flex;align-items:center;gap:4px"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#f59e0b;margin-right:2px"></span> Anna's steps</span></div>
 </header>
 
 <div class="alert-banner">
-  <strong>🔴 Thursday email due TODAY (4/30):</strong> Rowan W. starts Monday 5/4. Send now.
+  <strong>📦 Ryan K. laptop:</strong> Anna has it — ship overnight by end of week so he has it for 5/11 start. Email 4 due Thursday 5/7 for Ryan K. and David E.
 </div>
 
 <div class="info-banner">
-  <strong>📦 Sri V. laptop:</strong> Address on file (Cupertino). Order today — he's back from NYC. Ryan K. laptop ordered 4/29, shipping to Anna. Email 3 go-ahead given to Sean.
+  <strong>🎉 Rowan W. starts today</strong> — first week prep email sent 5/1. Sri V. and Matteo P. laptops ordered 4/30.
 </div>
 
 <div class="layout">
@@ -291,13 +291,13 @@
     <div class="section-label">Active pipeline</div>
 
     <!-- ── Rowan W. ── -->
-    <div class="card urgent" id="card-rowan-w">
+    <div class="card" id="card-rowan-w">
       <div class="card-header">
         <div class="person-info">
           <div class="person-name">Rowan W.</div>
           <div class="person-meta">Forward Deployed Architect</div>
         </div>
-        <span class="start-badge imminent">Starts 5/4</span>
+        <span class="start-badge started">Started 5/4</span>
       </div>
       <div class="checklist">
         <div class="step done">
@@ -340,11 +340,11 @@
           </div>
           <span class="owner-badge sean">Sean</span>
         </div>
-        <div class="step danger anna-owned">
-          <input type="checkbox" class="task-check">
+        <div class="step done anna-owned">
+          <input type="checkbox" class="task-check" checked>
           <div class="step-content">
             <div class="step-label">Email 4: First week prep</div>
-            <div class="step-detail">Due TODAY — April 30</div>
+            <div class="step-detail">Sent 5/1</div>
           </div>
           <span class="owner-badge anna">Anna</span>
         </div>
@@ -527,7 +527,7 @@
           <input type="checkbox" class="task-check" checked>
           <div class="step-content">
             <div class="step-label">Laptop ordered</div>
-            <div class="step-detail">Shipping to Anna — will have on day 1</div>
+            <div class="step-detail">Anna has it — ship overnight by end of week</div>
           </div>
           <span class="owner-badge anna">Anna</span>
         </div>
@@ -925,7 +925,7 @@
     { name: 'Bo T.',   date: '2026-04-21', cardId: 'card-bo-t',    color: '#94a3b8', past: true },
   ];
 
-  const TODAY = new Date(2026, 3, 30);
+  const TODAY = new Date(2026, 4, 4);
   const dateMap = {};
   people.forEach(p => { if (!dateMap[p.date]) dateMap[p.date] = []; dateMap[p.date].push(p); });
 
